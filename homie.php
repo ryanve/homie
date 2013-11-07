@@ -15,15 +15,18 @@ call_user_func(function() {
     $plugin['name'] = ucfirst($plugin['slug']);
     $plugin['option'] = 'plugin:' . $plugin['slug'];
     $plugin['prefix'] = $plugin['option'] . ':';
+
     $plugin['get'] = function() use (&$plugin) {
         return (array) get_option($plugin['option']);
     };
+
     $plugin['set'] = function($data) use (&$plugin) {
         return (null === $data 
             ? delete_option($plugin['option'])
             : update_option($plugin['option'], $data)
         ) ? $data : false;
     };
+
     $plugin['selects'] = array('*', __('Include'), __('Exclude'));
 
     is_admin() ? add_action('admin_menu', function() use (&$plugin) {
@@ -94,10 +97,6 @@ call_user_func(function() {
             add_settings_field($field, $label, function() use (&$curr, $field, $id, $key, $options) {
                 $style = 'display:inline-block;line-height:1;margin:.5em';
                 $value = empty($curr[$key][$id]) ? $options[0] : $curr[$key][$id];
-                #$state = empty($curr[$key]) ? ' checked' : '';
-                #echo "<input style='$style' type='checkbox' name='$field' value='$id'$state>";
-                #$state = $options[array_search($value, $options, true)];
-                #echo "<input style='$style' type='text' name='$field' value='$value'$state>";
                 echo array_reduce($options, function($str, $op) use ($value) {
                     $state = $value === $op ? ' selected' : '';
                     return "$str<option value='$op'$state>$op</option>";
@@ -115,6 +114,5 @@ call_user_func(function() {
             if ($selected === $plugin['selects'][2]) $ids[] = -$id;
             else $selected === $plugin['selects'][1] and $ids[] = $id;
         $ids and $query->set('cat', implode(',', $ids));
-        #$query->set('post_type', array('page', 'post'));
     });
 });

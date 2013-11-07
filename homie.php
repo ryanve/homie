@@ -2,7 +2,7 @@
 /*
 Plugin Name: Homie
 Plugin URI: http://github.com/ryanve/homie
-Description: Include or exclude categories on the home page.
+Description: Include or exclude homepage categories.
 Version: 0.1.0
 Author: Ryan Van Etten
 Author URI: http://ryanve.com

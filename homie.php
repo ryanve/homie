@@ -83,8 +83,6 @@ call_user_func(function() {
             $field = "$key-$id";
         
             register_setting($page['slug'], $field, function($value) use (&$plugin, &$curr, $key, $options, $id) {
-                //$value = is_int($value) || ctype_digit($value) ? (int) $value : null;
-                //$value && !in_array($value, $curr[$key]) and $curr[$key][] = $value;
                 $i = array_search($value, $options, true);
                 if ($i) $curr[$key][$id] = $value;
                 else unset($curr[$key][$id]);

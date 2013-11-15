@@ -11,13 +11,7 @@ Include or exclude homepage categories.
 
 == Description ==
 
-Include or exclude categories on the homepage.
-
-### [Usage](https://github.com/ryanve/homie#usage) options
-
-- `*` default
-- `Include` <b>whitelists</b> the category
-- `Exclude` <b>blacklists</b> the category
+Include or exclude categories on the homepage. See [documentation](https://github.com/ryanve/homie#usage).
 
 == Installation ==
 

@@ -3,7 +3,7 @@
 Plugin Name: Homie
 Plugin URI: http://github.com/ryanve/homie
 Description: Include or exclude homepage categories.
-Version: 0.1.1
+Version: 0.1.2
 Author: Ryan Van Etten
 Author URI: http://ryanve.com
 License: MIT
@@ -95,7 +95,7 @@ call_user_func(function() {
             $label = "<br><label style='$label' for='$field'>" . $category->name . '</label>';
 
             add_settings_field($field, $label, function() use (&$curr, $field, $id, $key, $options) {
-                $select = "<select name='$field' style='display:inline-block;line-height:1;margin:.5em'>"
+                $select = "<select name='$field' style='display:inline-block;line-height:1;margin:.5em'>";
                 $value = empty($curr[$key][$id]) ? $options[0] : $curr[$key][$id];
                 echo array_reduce($options, function($str, $op) use ($value) {
                     $state = $value === $op ? ' selected' : '';
